@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module2</title>
+    <link rel="stylesheet" href="Module2.css">
+</head>
+<body>
+    <main>
+        <section class="correctConteiner" id="correctConteiner">
+            <textarea  id="textCorrect"></textarea>
+            <nav>
+                <button id="Save"></button>
+                <button id="close"></button>
+            </nav>
+        </section>
+        <section class="widget" id="widget">
+
+            <img class="Logo_widget" id="Logo_widget" src="https://images.icon-icons.com/1149/PNG/512/1486504338-check-check-marks-list-checklist-documents-todo-list_81298.png" alt="">
+            <article class="insideContent" id="insideContent">
+                <section class="Setting" id="Setting">
+                    <section class="Conteiner1">
+                    <div class="ProgressBar"></div>
+                    <article class="Events" id="Events"></article>
+                    <section class="SettingWindows" id="SettingWindows">
+                        <button class="btn_option" id="correct">correct</button>
+                        <button class="btn_option" id="status">status</button>
+                        <button class="btn_option" id="delete">delete</button>
+                        <button class="btn_option" id="exit">exit</button>
+                    </section>
+                    <section class="Status_Bar" id="Status_Bar">
+                        <article class="Status_Color">
+                            <button class="Status_Btn" id="complete"></button>
+                            <button class="Status_Btn" id="incomplete"></button>
+                            <button class="Status_Btn" id="pending"></button>
+                        </article>
+                        <article class="Status_Description" >
+                            <p class="Status_text" id="complete_desc">complete</p>
+                            <p class="Status_text" id="incomplete_desc">incomplete</p>
+                            <p class="Status_text" id="pending_desc">pending</p>
+                        </article>
+                    </section>
+                    </section>
+                </section>
+                <button id="AddEvent">+</button>
+            </article>
+        </section>
+    </main>
+<script>
+document.getElementById("Logo_widget").addEventListener("click", function() {
+   if(document.getElementById("widget").style.width === "50px") {
+       document.getElementById("widget").style.width = "1000px";
+       document.getElementById("widget").style.height = "500px";
+       document.getElementById("Logo_widget").style.display = "none";
+       document.getElementById("widget").style.borderRadius = "5px";
+       document.getElementById("insideContent").style.display = "grid";
+   } else {
+       document.getElementById("widget").style.width = "50px";
+       document.getElementById("widget").style.height = "50px";
+       document.getElementById("Logo_widget").style.display = "block";
+       document.getElementById("widget").style.borderRadius = "70px";
+       document.getElementById("insideContent").style.display = "none";
+   }
+});
+
+function closeSettingWin(){
+    setTimeout(function(){
+    if(document.getElementById("SettingWindows").style.display = "grid"){
+        document.getElementById("SettingWindows").style.display = "none";
+        document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+        //eventElement.style.border = "none";
+    });
+    }
+    },100);
+};
+
+document.getElementById("AddEvent").addEventListener("click", function() {
+    closeSettingWin(); 
+    let Inp = document.createElement("input");
+    Inp.className = "EventInput";
+    document.getElementById("Events").appendChild(Inp);
+    Inp.focus(); 
+});
+
+
+document.addEventListener("blur", function(event) {
+    if (event.target.classList.contains("EventInput") && event.target.value.trim() === "") {
+        event.target.remove();
+    }
+    else if(event.target.classList.contains("EventInput") && event.target.value.trim() !== ""){
+        let activeInput = document.querySelector('.EventInput');
+        if (activeInput) {
+            let Event_P = document.createElement("div");
+            Event_P.className = "Event_P";
+            Event_P.innerHTML = activeInput.value;
+            activeInput.value = "";
+            activeInput.remove();
+            
+            setTimeout(function() {
+                document.getElementById("Events").appendChild(Event_P);
+            }, 50);
+        }
+    }
+}, true); 
+
+/////
+ document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+        document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+        if (event.target === eventElement) {
+            document.getElementById("SettingWindows").style.display = "grid";
+            document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+            eventElement.style.border = "none";
+            if (event.target === eventElement) {
+                eventElement.style.border = "1px solid gray";
+            }
+        });
+        };
+    });
+
+    document.getElementById("complete").addEventListener("click", function() {
+        document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+            if (event.target === eventElement) {
+                eventElement.style.border = "2px solid rgb(47, 190, 47)";
+                Close_Status_Bar();
+                closeSettingWin();
+            }
+        });
+    });
+
+    document.getElementById("incomplete").addEventListener("click", function() {
+        document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+            if (event.target === eventElement) {
+                eventElement.style.border = "2px solid rgb(201, 71, 71)";
+                Close_Status_Bar();
+                closeSettingWin();
+            }
+        });
+    });
+
+    document.getElementById("pending").addEventListener("click", function() {
+        document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+            if (event.target === eventElement) {
+                eventElement.style.border = "2px solid rgb(228, 228, 56)";
+                Close_Status_Bar();
+                closeSettingWin();
+            }
+        });
+    });
+
+});
+/////
+
+document.getElementById("exit").addEventListener("click", function(event) {
+    closeSettingWin(); 
+})
+
+document.getElementById("delete").addEventListener("click", function(event) {
+    document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+        if (eventElement.style.border === "1px solid gray") {
+            eventElement.remove();
+            closeSettingWin(); 
+        }
+    });
+});
+
+document.getElementById("correct").addEventListener("click", function(event) {
+   document.getElementById("correctConteiner").style.display = "flex";
+       document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+        if (eventElement.style.border === "1px solid gray") {
+           document.getElementById("textCorrect").innerHTML = eventElement.innerHTML;
+           document.getElementById("correct").classList.add("Correct-Active");
+        }
+    });
+});
+
+function closeCorrect(){
+    document.getElementById("correct").classList.remove("Correct-Active"); 
+    document.getElementById("textCorrect").value = "";
+    document.getElementById("correctConteiner").style.display = "none";
+};
+
+document.getElementById("Save").addEventListener("click", function(event) {
+    document.getElementById("correctConteiner").style.display = "flex";
+       document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+        if (eventElement.style.border === "1px solid gray") {
+            eventElement.innerHTML = document.getElementById("textCorrect").value;
+            closeCorrect();
+            closeSettingWin();
+        }
+    });
+});
+
+document.getElementById("close").addEventListener("click", function(event) {
+    closeCorrect();
+    closeSettingWin();
+});
+
+document.getElementById("status").addEventListener("click", function(event) {
+    document.getElementById("Status_Bar").style.width = "18px";
+    document.getElementById("Status_Bar").style.padding = "10px";
+    if(document.getElementById("Status_Bar").style.width === "18px") {
+        document.getElementById("status").style.backgroundColor = "rgb(11, 184, 11)";
+        document.getElementById("status").style.color = "#fff";
+    }
+});
+
+document.getElementById("complete").addEventListener("mouseenter", function(event) {
+    document.getElementById("Status_Bar").style.width = "90px";
+    document.querySelectorAll(".Status_text").forEach(function(eventElement) {
+        eventElement.style.opacity = "0";
+    });
+    document.getElementById("complete_desc").style.opacity = "1";
+});
+
+document.getElementById("incomplete").addEventListener("mouseenter", function(event) {
+    document.getElementById("Status_Bar").style.width = "90px";
+    document.querySelectorAll(".Status_text").forEach(function(eventElement) {
+        eventElement.style.opacity = "0";
+    });
+    document.getElementById("incomplete_desc").style.opacity = "1";
+});
+
+document.getElementById("pending").addEventListener("mouseenter", function(event) {
+    document.getElementById("Status_Bar").style.padding = "10px";
+    document.getElementById("Status_Bar").style.width = "90px";
+    document.querySelectorAll(".Status_text").forEach(function(eventElement) {
+        eventElement.style.opacity = "0";
+    });
+    document.getElementById("pending_desc").style.opacity = "1";
+});
+
+function Close_Status_Bar(){
+    document.getElementById("Status_Bar").style.width = "0px";
+    document.getElementById("Status_Bar").style.padding = "0px";   
+}
+
+document.getElementById("Status_Bar").addEventListener("mouseleave", function(event) {
+    if(document.getElementById("Status_Bar").style.display = "flex"){
+        Close_Status_Bar();
+        document.getElementById("status").style.backgroundColor = "rgb(110, 103, 103)";
+        document.getElementById("status").style.color = "rgb(155, 149, 149)";
+    };
+});
+
+document.querySelectorAll(".Status_Btn").forEach(function(event) {
+    event.addEventListener("mouseleave", function(event) {
+        document.querySelectorAll(".Status_text").forEach(function(eventElement) {
+            eventElement.style.opacity = "0";
+        });
+    })
+});
+
+document.getElementById("complete").addEventListener("click", function(event) {
+    document.querySelectorAll(".Event_P").forEach(function(eventElement) {
+        if (eventElement.style.border !== "2px solid rgb(47, 190, 47)") {
+            eventElement.style.border = "2px solid rgb(47, 190, 47)";
+            Close_Status_Bar();
+        }
+    });
+});
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

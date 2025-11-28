@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Stiker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="main">
+        <nav class="Setting_Bar_Frame">
+            <section class="Btns">
+                <button class="Setting_Size" id="Plus"></button>
+                <button class="Setting_Size" id="Minus"></button>
+            </section>
+        </nav>
+        <section class="Dash-Board" id="Board" >
+                <div class="Zoom_Zone" id="Zoom_Zone">
+                    <div class="SettingBar" id="SettingBar">
+                        <button id="Del_Sticker"></button>
+                        <div id="ChoouseColor">
+                            <div class="Color_Sticker"></div>
+                            <button class="Btn_color" id="orange"></button>
+                            <button class="Btn_color" id="red"></button>
+                            <button class="Btn_color" id="green"></button>
+                            <button class="Btn_color" id="yellow"></button>
+                            <button class="Btn_color" id="gray"></button>
+                            <button class="Btn_color" id="blue"></button>
+                        </div>
+                        <button id="Add_Text"></button>
+                        <div id="Text_Size">
+                            <div class="icon_Text_Size"></div>
+                            <input type="number" min="1" max="80" id="Inp_Text_Size" value="50" ></input>
+                        </div>
+                        <div id="Sticker_Size">
+                            <div class="icon_Sticker_Size" id="icon"></div>
+                            <input type="number" max="7" min="1" id="Inp_Sticker_Size" value="5" >
+                        </div>
+                        <button id="Close_Setting_Bar"></button>
+                    </div>
+                </div>
+        </section>
+        <nav>
+            <div class="Btn-Add" id="Add">
+                <div class="icon" id="icon"></div>
+                <button id="Add-Stiker"></button>
+            </div>
+        </nav>
+    </main>
+<script src="script.js"></script>
+</body>
+</html>

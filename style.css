@@ -1,0 +1,382 @@
+@font-face {
+    font-family: Kalam;
+    src: url(/Calama_new.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 60px 890px  0px; 
+    justify-items: center;
+    align-items: center;
+}
+
+
+
+nav{
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #ffffffc2;
+    filter: blur(100);
+}
+
+.Btn-Add{
+    width: 50px;
+    height: 50px;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    gap: 0px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-image: url(https://images.icon-icons.com/1769/PNG/96/4115237-add-plus_114047.png);
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+#Add-Stiker{
+    width: 45px;
+    height: 45px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    flex-shrink: 0;
+    background-image: url(https://images.icon-icons.com/1875/PNG/512/sticker_120054.png);
+    background-size: contain;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.Btn-Add:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+.Btn-Add:active{
+    transform: scale(0.9);
+    transition: 0.2s;
+}
+
+.Btn-Add:not(:hover){
+    transform: scale(1.0);
+    transition: 0.2s;
+}
+
+.Dash-Board{
+    position: relative;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    width: 100%;
+    height: 900px;
+    background-color: rgb(241, 241, 241);
+    overflow: hidden;
+}
+
+.Zoom_Zone{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    background-color: rgba(241, 241, 241, 0);
+}
+
+
+
+.Stick{
+    width: 500px;
+    height: 500px;
+    background-color: #ffffff00;
+    border-radius: 10px;
+    background-size: contain;
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.SettingBar{
+    position: absolute;
+    display: none;
+    justify-content: start;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    min-width: 350px;
+    max-width: fit-content;
+    height: 60px;
+    background-color: rgb(214, 214, 214);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+#Del_Sticker{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: none;
+    background-image: url(https://images.icon-icons.com/931/PNG/512/delete_remove_bin_icon-icons.com_72400.png);
+    background-size: contain;
+}
+
+#Del_Sticker:hover{
+    transform: scale(1.1);
+    transition: 0.1s;
+}
+
+#Del_Sticker:not(:hover){
+    transform: scale(1.0);
+    transition: 0.1s;
+}
+
+#Del_Sticker:active{
+    transform: scale(0.9);
+    transition: 0.1s;
+}
+
+#ChoouseColor{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    transition: 0.1s;
+}
+
+.Btn_color{
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+}
+
+.Btn_color:active{
+  transform: scale(0.9);
+  transition: 0.1s;
+}
+
+#orange{
+    background-color: orange;
+}
+
+#red{
+    background-color: red;
+}
+
+#yellow{
+    background-color: yellow;
+}
+
+#green{
+    background-color: green;
+}
+
+#gray{
+    background-color: gray;
+}
+
+#blue{
+    background-color: blue;
+}
+
+.Color_Sticker{    
+    width: 50px;
+    height: 50px;
+    background-image: url(https://images.icon-icons.com/1673/PNG/512/colorpaletteoutline_110749.png);
+    background-size: contain; 
+}
+
+#Close_Setting_Bar{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: none;
+    background-image: url(https://images.icon-icons.com/1157/PNG/512/1487086345-cross_81577.png);
+    background-size: contain; 
+}
+
+#Add_Text{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: none;
+    background-image: url(https://images.icon-icons.com/1558/PNG/512/353430-checkbox-edit-pen-pencil_107516.png);
+    background-size: contain;
+}
+
+#Text_Size{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: none;
+    background-size: contain;
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    transition: 0.1s;
+}
+
+#Inp_Text_Size{
+    width: 50px;
+    border: none;
+    outline: none;
+    user-select: none;
+}
+
+#Sticker_Size{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: none;
+    background-size: contain;
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    transition: 0.1s;
+}
+
+#Inp_Sticker_Size{
+    width: 50px;
+    border: none;
+    outline: none;
+    user-select: none;
+}
+
+.icon_Sticker_Size{
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-image: url(https://images.icon-icons.com/3250/PNG/512/slide_size_filled_icon_201192.png);
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+.icon_Text_Size{
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-image: url(https://images.icon-icons.com/3264/PNG/512/font_size_icon_207073.png);
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+.Text_Input{
+    overflow-y: hidden;
+    height: 500px;
+    min-height: 300px;
+    max-height: 300px;
+    background-color: rgba(153, 134, 51, 0);
+    border: none;
+    outline: none;
+    padding: 20px;
+    resize: vertical;
+    font-family: Kalam;
+    font-size: 70px;
+    font-weight: normal;
+    letter-spacing: 5px;
+    color: white;
+}
+
+.Text_Input::placeholder{
+color: rgb(255, 255, 255);
+opacity: 0.7;
+}
+    
+.Text_P{
+    pointer-events: none;
+    word-wrap: break-word;
+    width: 400px;
+    display: block;
+    height: auto;
+    box-sizing: border-box;
+    text-align: center;
+    user-select: none;
+    font-family: Kalam;
+    font-size: 50px;
+    letter-spacing: 3px;
+    color: white;
+}
+
+.Setting_Bar_Frame{
+    width:100%;
+    display: flex;
+    justify-content: end;
+}
+
+.Setting_Size{
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    border: none;
+}
+
+.Setting_Size:active{
+    transform: scale(0.9);
+    transition: 0.1s;
+}
+
+.Btns{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#Plus{
+    background-image: url(https://images.icon-icons.com/1946/PNG/512/1904677-add-addition-calculate-charge-create-new-plus_122527.png);
+    background-size: contain;
+}
+
+#Minus{
+    background-image: url(https://images.icon-icons.com/1946/PNG/512/1904666-calculate-close-delete-hide-minimize-minus-remove_122516.png);
+    background-size: contain;
+}
