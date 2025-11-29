@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Kalam;
+    src: url(/Calama_new.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
 *{
     margin: 0;
     padding: 0;
@@ -19,6 +25,7 @@ main{
     height: 50px;
     background-color: #D9D9D9;
     border-radius: 40px;
+    padding: 0px;
     transition: 0.3s;
 }
 
@@ -106,24 +113,28 @@ transition: 0.1s;
     background-color: rgb(255, 255, 255);
     color: black;
     align-items: start;
-    display: flex;
+    display: block;
     justify-content: start;
     padding-left: 10px;
     font-size: 20px;
     font-weight: lighter;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     line-height: 40px;
-    overflow-x: hidden;
+    overflow-x:none;
     overflow-y: hidden;
     padding: 10px;
     border-radius: 5px;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+    user-select: none;
 }
 
 .Events{
     width: 500px;
     height: 400px;
     display: grid;
-    grid-auto-rows: 100px;
+    grid-auto-rows: min-content;
+    gap: 20px;
     justify-content: center;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -171,7 +182,7 @@ transition: 0.1s;
     gap: 6px;
     justify-content: center;
     align-content: center;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-left: 5px;
 }
 
@@ -181,7 +192,7 @@ transition: 0.1s;
     background-color: rgb(110, 103, 103);
     color: rgb(155, 149, 149);
     border: none;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 #status:hover{
